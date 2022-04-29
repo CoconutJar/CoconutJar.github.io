@@ -20,9 +20,9 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-const normal2Texture = new THREE.TextureLoader().load('normal2.jpg');
+const normal2Texture = new THREE.TextureLoader().load('assets/normal2.jpg');
 // Torus
-const ringTexture = new THREE.TextureLoader().load('waterTexture.jpg')
+const ringTexture = new THREE.TextureLoader().load('assets/waterTexture.jpg')
 ringTexture.wrapS = ringTexture.wrapT = THREE.MirroredRepeatWrapping
 ringTexture.repeat.set(10, 10);
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
@@ -49,7 +49,7 @@ scene.add(pointLight, ambientLight);
 // scene.add(lightHelper, gridHelper)
 //const controls = new OrbitControls(camera, renderer.domElement);
 
-const novaTexture = new THREE.TextureLoader().load('nova.jpg')
+const novaTexture = new THREE.TextureLoader().load('assets/nova.jpg')
 var starArray = []
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -72,20 +72,20 @@ for(let i = 0; i < 300; i++){
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('assets/space.jpg');
 scene.background = spaceTexture;
 
 // Avatar
 
-const cubeTexture = new THREE.TextureLoader().load('cat.jpg');
+const cubeTexture = new THREE.TextureLoader().load('assets/cat.jpg');
 
 const pictureCube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: cubeTexture }));
 
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const moonTexture = new THREE.TextureLoader().load('assets/moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('assets/normal.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(1.5, 32, 32),
@@ -99,8 +99,8 @@ const moon = new THREE.Mesh(
 
 // Exploding planet
 
-const explodingTexture = new THREE.TextureLoader().load('fireball.jpg');
-const explodingNormalTexture = new THREE.TextureLoader().load('normal.jpg');
+const explodingTexture = new THREE.TextureLoader().load('assets/fireball.jpg');
+const explodingNormalTexture = new THREE.TextureLoader().load('assets/normal.jpg');
 
 const explodingPlanet = new THREE.Mesh(
   new THREE.SphereGeometry(10, 32, 32),
@@ -157,7 +157,7 @@ pictureCube.position.x = 2;
 
 var fireballArray = [];
 
-const ballTexture = new THREE.TextureLoader().load('explodingPlanet.jpg');
+const ballTexture = new THREE.TextureLoader().load('assets/explodingPlanet.jpg');
 
 //ballTexture.wrapS = ballTexture.wrapT = THREE.MirroredRepeatWrapping
 //ballTexture.repeat.set(10, 10);
@@ -236,7 +236,8 @@ function animate() {
   }
 
   for (let i = 0; i < starArray.length; i++) { 
-    starArray[i].translateX(0.1)
+    starArray[i].rotation.z -= 0.01;
+    starArray[i].position.x += 0.1;
     if(starArray[i].position.x > 50){
         starArray[i].position.x = -50
     }
